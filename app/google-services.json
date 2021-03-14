@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478253451886",
+    "project_id": "tp3-kotlin-b3ad0",
+    "storage_bucket": "tp3-kotlin-b3ad0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478253451886:android:069ec8127ece3c01e7b47f",
+        "android_client_info": {
+          "package_name": "com.philippo.tp3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478253451886-3bm59ed9hco3kh1umkbumd0er1okcshn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0Tnr0P7AxyRnwHMMSsUPabX6kRn-o8Jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478253451886-3bm59ed9hco3kh1umkbumd0er1okcshn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

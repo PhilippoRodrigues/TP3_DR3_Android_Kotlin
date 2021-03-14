@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/formReminderFragment"
+        android:name="com.philippo.tp3.ui.reminder.form.FormReminderFragment"
+        android:label="form_reminder_fragment"
+        tools:layout="@layout/form_reminder_fragment" >
+        <action
+            android:id="@+id/action_formReminderFragment_to_listReminderFragment"
+            app:destination="@id/listReminderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listReminderFragment"
+        android:name="com.philippo.tp3.ui.reminder.list.ListReminderFragment"
+        android:label="list_reminder_fragment"
+        tools:layout="@layout/list_reminder_fragment" >
+        <action
+            android:id="@+id/action_listReminderFragment_to_formReminderFragment"
+            app:destination="@id/formReminderFragment" />
+        <action
+            android:id="@+id/action_listReminderFragment_to_showReminderFragment2"
+            app:destination="@id/showReminderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.philippo.tp3.ui.user.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_listReminderFragment"
+            app:destination="@id/listReminderFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.philippo.tp3.ui.user.signup.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/sign_up_fragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showReminderFragment"
+        android:name="com.philippo.tp3.ShowReminderFragment"
+        android:label="show_reminder_fragment"
+        tools:layout="@layout/show_reminder_fragment" />
+</navigation>
