@@ -63,8 +63,8 @@ class ListReminderFragment : Fragment() {
                             reminderRecyclerAdapter.notifyItemRemoved(position)
                             showSnackbar(reminder)
                         } else {
-                            val reminder = reminders[position]
-                            viewModel.deleteReminder(reminder)
+//                            val reminder = reminders[position]
+//                            viewModel.deleteReminder(reminder)
                             findNavController().navigate(R.id.formReminderFragment)
                         }
                     }
