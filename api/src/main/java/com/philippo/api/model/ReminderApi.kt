@@ -1,10 +1,10 @@
 package com.philippo.api.model
 
-class ReminderApi (
+open class ReminderApi (
     var id: Long? = null,
     var description: String? = null,
     var name: String? = null,
-    var owner: Owner? = null
+    var owner: User? = null
 ) {
-    override fun toString(): String = "$name\n\t$description"
+    override fun toString(): String = "$name\n\t${owner?.full_name_display}"
 }

@@ -8,7 +8,7 @@ import com.philippo.api.model.ReminderApi
 import com.philippo.api.retrofit.ApiClient
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val userId: Long?) : ViewModel() {
 
     private val _reminders = MutableLiveData<List<ReminderApi>>()
     val reminders: LiveData<List<ReminderApi>> = _reminders
@@ -20,8 +20,8 @@ class HomeViewModel : ViewModel() {
         viewModelScope.launch{
             try {
                 val reminderService = ApiClient.getReminderService()
-                val reminders  = reminderService.all()
-                _reminders.value = reminders
+
+                _reminders.value = if (userId == null) reminderService.all() else reminderService.allByReminder(userId)
             } catch (e: Exception) {
                 _message.value = "${e.message}"
             }
