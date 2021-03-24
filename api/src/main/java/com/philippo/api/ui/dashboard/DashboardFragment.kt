@@ -55,8 +55,8 @@ class DashboardFragment : Fragment() {
 
     private fun preencherInformacoesReminderDetail(reminderDetail: ReminderDetail) {
         textViewReminderDetailName.text = reminderDetail.name
-        textViewReminderDetailDescription.text = reminderDetail.description
-        textViewReminderDetailOwner.text = reminderDetail.owner?.full_name_display
+        textViewReminderDetailDescription.text = reminderDetail.content
+        textViewReminderDetailOwner.text = reminderDetail.owner?.name
         listViewReminderDetailMembersName.adapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_expandable_list_item_1,

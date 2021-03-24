@@ -11,7 +11,7 @@ object ApiClient {
         if (instance == null)
             instance = Retrofit
                 .Builder()
-                .baseUrl("https://taiga.tic.ufrj.br")
+                .baseUrl("https://api.todoist.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         return instance as Retrofit
