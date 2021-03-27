@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.philippo.tp3.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.list_reminder_fragment.*
 import kotlinx.android.synthetic.main.login_fragment.*
 
@@ -68,6 +69,7 @@ class LoginFragment : Fragment() {
 
         loginViewModel.status.observe(viewLifecycleOwner) {
             if (it) {
+                requireActivity().bottomNavigationView.visibility = View.VISIBLE
                 findNavController().navigate(R.id.action_loginFragment_to_listReminderFragment)
             }
         }

@@ -5,7 +5,7 @@
         android:id="@+id/listReminderFragment"
         android:title="Reminders" />
     <item
-        android:id="@+id/perfilFragment"
+        android:id="@+id/userProfileFragment"
         android:title="Profile" />
 
 </menu>

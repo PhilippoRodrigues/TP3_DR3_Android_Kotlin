@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -52,4 +55,8 @@
         android:name="com.philippo.tp3.ShowReminderFragment"
         android:label="show_reminder_fragment"
         tools:layout="@layout/show_reminder_fragment" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.philippo.tp3.ui.user.profile.UserProfileFragment"
+        android:label="UserProfileFragment" />
 </navigation>
