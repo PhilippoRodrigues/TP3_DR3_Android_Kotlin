@@ -21,7 +21,7 @@ class HomeViewModel(private val userId: Long?) : ViewModel() {
             try {
                 val reminderService = ApiClient.getReminderService()
 
-                _reminders.value = if (userId == null) reminderService.all("Bearer 99cf4cf33e7f3b65da540e59e3f7da1794219aa6") else reminderService.allByReminder(userId)
+                _reminders.value = if (userId == null) reminderService.all() else reminderService.allByReminder(userId)
             } catch (e: Exception) {
                 _message.value = "${e.message}"
             }

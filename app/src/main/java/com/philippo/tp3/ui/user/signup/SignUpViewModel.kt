@@ -13,13 +13,40 @@ class SignUpViewModel : ViewModel() {
     private val _msg = MutableLiveData<String>()
     val msg: LiveData<String> = _msg
 
-    fun saveRegister(email: String, password: String) {
+    fun saveRegister(email: String, password: String, nome: String, dataNascimento: String, username: String, ) {
         UserDao
             .saveRegister(email, password)
             .addOnSuccessListener {
-                _status.value = true
+                if (it.user != null)
+                    saveProfileInfos(
+                        it.user!!.uid,
+                        nome,
+                        username,
+                        dataNascimento
+                    )
+            }
+            .addOnFailureListener {
+                changeMessage("${it.message}")
+            }
+            .addOnFailureListener {
+                changeMessage("${it.message}")
+            }
+    }
+
+    private fun saveProfileInfos(
+        userId: String,
+        nome: String,
+        username: String,
+        dataNascimento: String
+    ) {
+        UserDao
+            .saveorUpdateUserProfile(
+                userId, nome, username, dataNascimento)
+
+            .addOnSuccessListener {
                 changeMessage("User successfully registered!")
             }
+
             .addOnFailureListener {
                 changeMessage("${it.message}")
             }

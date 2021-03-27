@@ -23,7 +23,7 @@ class DashboardFragment : Fragment() {
     private lateinit var textViewReminderDetailName: TextView
     private lateinit var textViewReminderDetailDescription: TextView
     private lateinit var textViewReminderDetailOwner: TextView
-    private lateinit var listViewReminderDetailMembersName: ListView
+//    private lateinit var listViewReminderDetailMembersName: ListView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +43,7 @@ class DashboardFragment : Fragment() {
         textViewReminderDetailName = root.findViewById(R.id.textViewReminderDetailName)
         textViewReminderDetailDescription = root.findViewById(R.id.textViewReminderDetailDescription)
         textViewReminderDetailOwner = root.findViewById(R.id.textViewReminderDetailOwner)
-        listViewReminderDetailMembersName = root.findViewById(R.id.listViewReminderDetailMembersName)
+//        listViewReminderDetailMembersName = root.findViewById(R.id.listViewReminderDetailMembersName)
 
         dashboardViewModel.reminder.observe(viewLifecycleOwner) {
             if (it != null)
@@ -57,16 +57,16 @@ class DashboardFragment : Fragment() {
         textViewReminderDetailName.text = reminderDetail.name
         textViewReminderDetailDescription.text = reminderDetail.content
         textViewReminderDetailOwner.text = reminderDetail.owner?.name
-        listViewReminderDetailMembersName.adapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_expandable_list_item_1,
-            reminderDetail.members
-        )
+//        listViewReminderDetailMembersName.adapter = ArrayAdapter(
+//            requireContext(),
+//            android.R.layout.simple_expandable_list_item_1,
+//            reminderDetail.members
+//        )
 
-        listViewReminderDetailMembersName.setOnItemClickListener { parent, view, position, id ->
-            val userId = reminderDetail.members[position].id
-            val bundle = bundleOf("userId" to userId)
-            findNavController().navigate(R.id.navigation_home, bundle)
-        }
+//        listViewReminderDetailMembersName.setOnItemClickListener { parent, view, position, id ->
+//            val userId = reminderDetail.members[position].id
+//            val bundle = bundleOf("userId" to userId)
+//            findNavController().navigate(R.id.navigation_home, bundle)
+//        }
     }
 }

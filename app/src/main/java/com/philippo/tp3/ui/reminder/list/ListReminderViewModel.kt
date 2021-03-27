@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.philippo.tp3.dao.ReminderDao
 import com.philippo.tp3.model.Reminder
-import com.philippo.tp3.model.ReminderUtil
 
 class ListReminderViewModel(private val reminderDao: ReminderDao) : ViewModel() {
 
@@ -38,7 +37,7 @@ class ListReminderViewModel(private val reminderDao: ReminderDao) : ViewModel() 
         reminderDao.get(reminder.name!!)
     }
 
-        fun encerrarSessao() {
+    fun encerrarSessao() {
         firebaseAuth.signOut()
     }
 }

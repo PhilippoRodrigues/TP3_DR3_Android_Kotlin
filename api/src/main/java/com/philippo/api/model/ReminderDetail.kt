@@ -5,6 +5,6 @@ class ReminderDetail (
     name: String? = null,
     content: String? = null,
     owner: User? = null,
-    var members: List<User>
+    var members: List<ReminderApi>
 
-): ReminderApi(id, content, name, owner)
+): ReminderApi(id, name, content, owner)
