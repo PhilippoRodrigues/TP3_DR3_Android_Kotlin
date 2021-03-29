@@ -15,9 +15,9 @@ class RecyclerListReminder(
 ) : RecyclerView.Adapter<RecyclerListReminder.ReminderViewHolder>() {
 
     class ReminderViewHolder(viewItem: View): RecyclerView.ViewHolder(viewItem){
-//        val reminderName: TextView = viewItem.textViewRecyclerReminderName
+        val reminderName: TextView = viewItem.textViewRecyclerReminderText
 //        val reminderType: TextView = viewItem.textViewRecyclerReminderType
-        val reminderText: TextView = viewItem.textViewRecyclerReminderText
+//        val reminderText: TextView = viewItem.textViewRecyclerReminderText
     }
 
     override fun onCreateViewHolder(
@@ -32,9 +32,9 @@ class RecyclerListReminder(
 
     override fun onBindViewHolder(holder: ReminderViewHolder, position: Int) {
         val reminder = reminders[position]
-//        holder.reminderName.text = reminder.name
+        holder.reminderName.text = reminder.name
 //        holder.reminderType.text = reminder.type
-        holder.reminderText.text = reminder.text
+//        holder.reminderText.text = reminder.content
 
         holder.itemView.setOnClickListener {
             actionClick(reminder)

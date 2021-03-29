@@ -1,41 +1,51 @@
 package com.philippo.tp3.ui.reminder.form
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.philippo.tp3.dao.ReminderDao
+import androidx.lifecycle.*
+import com.philippo.tp3.api.ApiClient
 import com.philippo.tp3.model.Reminder
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
-class FormReminderViewModel(private val reminderDao: ReminderDao, application: Application) :
-    AndroidViewModel(application) {
-
-    private val app = application
+class FormReminderViewModel : ViewModel() {
 
     private val _status = MutableLiveData<Boolean>()
     val status: LiveData<Boolean> = _status
 
-    private val _msg = MutableLiveData<String?>()
-    val msg: MutableLiveData<String?> = _msg
+    private val _msg = MutableLiveData<String>()
+    val msg: MutableLiveData<String> = _msg
 
-    init {
-        _status.value = false
-        _msg.value = null
-    }
+//    init {
+//        _status.value = false
+//        _msg.value = null
+//    }
 
-    fun insertReminder(
-        name: String, type: String, text: String
-    ) {
-
-        val reminder = Reminder(name, type, text, checked = false)
-        reminderDao.insert(reminder)
-            .addOnSuccessListener {
+    fun saveReminder(name: String) {
+        viewModelScope.launch {
+            try {
+                val reminder = Reminder(id=0, name)
+                val reminderService = ApiClient.getReminderService()
+                reminderService.createReminder(reminder)
                 _status.value = true
-                _msg.value = "Reminder added successfully!"
+                _msg.value = "Reminder created!"
+            } catch (e: Exception){
+                _msg.value = "${e.message}"
             }
-            .addOnFailureListener {
-                _msg.value = "${it.message}"
-            }
+        }
     }
+
+//    fun insertReminder(
+//        name: String, type: String, text: String
+//    ) {
+
+//        val reminder = Reminder(name, type, text)
+//        reminderDao.insert(reminder)
+//            .addOnSuccessListener {
+//                _status.value = true
+//                _msg.value = "Reminder added successfully!"
+//            }
+//            .addOnFailureListener {
+//                _msg.value = "${it.message}"
+//            }
+//    }
 
 }

@@ -1,12 +1,10 @@
 package com.philippo.tp3.model
 
-import com.google.firebase.firestore.DocumentId
-
-class Reminder (
-    @DocumentId
+open class Reminder(
+    var id: Long? = null,
     var name: String? = null,
-
-    val type: String? = null,
-    val text: String ? = null,
-    val checked: Boolean? = false,
-)
+//    var content: String ? = null,
+//    var owner: UserApi? = null
+) {
+    override fun toString(): String = "$name}"
+}
