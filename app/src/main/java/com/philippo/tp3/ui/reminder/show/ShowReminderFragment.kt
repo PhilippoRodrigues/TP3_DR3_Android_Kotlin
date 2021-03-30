@@ -21,9 +21,6 @@ class ShowReminderFragment : Fragment() {
 
     private lateinit var textViewShowReminderName: TextView
 
-    //    private lateinit var textViewReminderContent: TextView
-//    private lateinit var textViewReminderDetailOwner: TextView
-//
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,8 +42,6 @@ class ShowReminderFragment : Fragment() {
         val root = inflater.inflate(R.layout.show_reminder_fragment, container, false)
 
         textViewShowReminderName = root.findViewById(R.id.textViewShowReminderShowName)
-//        textViewReminderContent = root.findViewById(R.id.textViewShowReminderText)
-//        textViewReminderDetailOwner = root.findViewById(R.id.textViewShowReminderOwner)
 
         reminderViewModel.reminder.observe(viewLifecycleOwner) {
             if (it != null) {
@@ -79,7 +74,7 @@ class ShowReminderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fabShowBookDelete.setOnClickListener {
+        fabShowReminderDelete.setOnClickListener {
             reminderViewModel.delete()
         }
     }

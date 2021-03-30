@@ -11,8 +11,6 @@ import kotlinx.coroutines.launch
 
 class ListReminderViewModel(private val userId: Long?) : ViewModel() {
 
-    private val reminderService = ApiClient.getReminderService()
-
     private val firebaseAuth = FirebaseAuth.getInstance()
 
     private val _reminders = MutableLiveData<List<Reminder>>()
@@ -37,25 +35,6 @@ class ListReminderViewModel(private val userId: Long?) : ViewModel() {
         }
     }
 
-    //    fun updateRemindersList() {
-//        reminderDao.all().addSnapshotListener { snapshot, error ->
-//            if (error != null) Log.i("Reminders", "${error.message}")
-//            else
-//                if (snapshot != null && !snapshot.isEmpty)
-//                    _reminders.value = snapshot.toObjects(Reminder::class.java)
-//        }
-//    }
-//
-//    fun deleteReminder(reminder: Reminder) {
-//        reminderDao.delete(reminder)
-//    }
-//
-//    fun selectReminder(reminder: Reminder) {
-//        _reminder.value = reminder
-//
-//        reminderDao.get(reminder.name!!)
-//    }
-//
     fun encerrarSessao() {
         firebaseAuth.signOut()
     }

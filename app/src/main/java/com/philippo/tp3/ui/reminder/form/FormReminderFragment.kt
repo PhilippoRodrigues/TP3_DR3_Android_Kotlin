@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -25,16 +24,7 @@ class FormReminderFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.form_reminder_fragment, container, false)
 
-//        val application = requireActivity().application
-//        val formReminderViewModelFactory = FormReminderViewModelFactory(
-//            ReminderDaoFirestore(), application)
-
         viewModel = ViewModelProvider(this).get(FormReminderViewModel::class.java)
-
-//        viewModel.status.observe(viewLifecycleOwner){ status ->
-//            if (status)
-//                findNavController().popBackStack()
-//        }
 
         viewModel.let { vm ->
             vm.status.observe(viewLifecycleOwner) {
@@ -51,8 +41,6 @@ class FormReminderFragment : Fragment() {
                         ).show()
             }
         }
-
-//        return inflater.inflate(R.layout.form_reminder_fragment, container, false)
         return view
     }
 
@@ -65,12 +53,6 @@ class FormReminderFragment : Fragment() {
 
         btnSaveFormReminder.setOnClickListener {
             val name = editTextFormReminderName.text.toString()
-//            val type = editTextFormReminderType.text.toString()
-//            val text = editTextFormReminderText.text.toString()
-//            val content = editTextFormReminderText.text.toString()
-
-//            viewModel.insertReminder(name, type, text)
-//            viewModel.insertReminder(name, content)
 
             viewModel.saveReminder(name)
 
@@ -80,9 +62,6 @@ class FormReminderFragment : Fragment() {
 
     private fun fillForm(reminder: Reminder) {
         editTextFormReminderName.setText(reminder.name)
-//        editTextFormReminderType.setText(reminder.type)
-//        editTextFormReminderText.setText(reminder.text)
-//        editTextFormReminderText.setText(reminder.content)
         btnSaveFormReminder.text = "Update"
     }
 }

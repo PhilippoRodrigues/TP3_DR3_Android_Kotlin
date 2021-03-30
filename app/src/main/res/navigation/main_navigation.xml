@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_showReminderFragment_to_listReminderFragment"
             app:destination="@id/listReminderFragment" />
+        <action
+            android:id="@+id/action_showReminderFragment_to_formReminderFragment2"
+            app:destination="@id/formReminderFragment" />
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"

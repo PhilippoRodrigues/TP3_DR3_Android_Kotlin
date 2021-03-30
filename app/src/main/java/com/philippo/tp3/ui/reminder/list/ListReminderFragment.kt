@@ -18,10 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.philippo.tp3.R
-import com.philippo.tp3.adapter.RecyclerListReminder
 import com.philippo.tp3.model.Reminder
 import com.philippo.tp3.model.ReminderUtil
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.list_reminder_fragment.*
 
 class ListReminderFragment : Fragment() {
@@ -34,25 +35,19 @@ class ListReminderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        //Não dá para implementar, pois dá erro 403 (provavelmente porque há dois tipos de auten-
+        //ticação - FirebaseAuth e Bearer da API)
+
 //        val firebaseAuth = FirebaseAuth.getInstance()
 //        val firebaseUser = firebaseAuth.currentUser
 //        if (firebaseUser == null)
 //            findNavController().popBackStack()
 
-//        val view = inflater.inflate(R.layout.list_reminder_fragment, container, false)
-
-//        val listReminderViewModelFactory = ListReminderViewModelFactory(ReminderDaoFirestore())
-//        viewModel = ViewModelProvider(this, listReminderViewModelFactory)
-//            .get(ListReminderViewModel::class.java)
-
         val userId = arguments?.getLong("userId")
 
         listReminderViewModelFactory = ListReminderViewModelFactory(userId)
 
-        viewModel = ViewModelProvider(
-            this,
-            listReminderViewModelFactory
-        ).get(ListReminderViewModel::class.java)
+        viewModel = ViewModelProvider(this, listReminderViewModelFactory).get(ListReminderViewModel::class.java)
 
         val view = inflater.inflate(R.layout.list_reminder_fragment, container, false)
 
@@ -66,7 +61,6 @@ class ListReminderFragment : Fragment() {
             )
             listViewReminder.setOnItemClickListener { parent, view, position, id ->
                 val bundle = bundleOf(
-                    //Recebe um conjunto de chave e valor
                     "reminderId" to it[position].id
                 )
                 findNavController().navigate(
@@ -82,6 +76,8 @@ class ListReminderFragment : Fragment() {
                 Snackbar.make(requireContext(), this.requireView(), it, Snackbar.LENGTH_LONG).show()
         }
 
+        /* Não quero apagar, pois tinha feito essa parte com carinho no TP3, pensando que iria utilizar
+            no AT */
 
 //        viewModel.let { vm ->
 //            vm.reminders.observe(viewLifecycleOwner) {
@@ -169,6 +165,7 @@ class ListReminderFragment : Fragment() {
 
         fabSignOut.setOnClickListener {
             viewModel.encerrarSessao()
+            requireActivity().bottomNavigationView.visibility = View.GONE
             findNavController().navigate(R.id.loginFragment)
         }
     }
